@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crediton</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+</head>
+<body>
+<div></div>
+<div class="container hero-unit" style="width: 300px;margin-top: 20px;height: 200px;">
+    <form class="form-signin" method="POST" action="/admin/login">
+        <h2 class="form-signin-heading">Вход</h2>
+        <input type="text" class="input-block-level" name="email" placeholder="емайл" value="{{email}}" >
+        <input type="password" name="password" class="input-block-level" placeholder="пароль">
+        <input type="hidden" name="next" value="{{next}}">
+        <label class="checkbox">
+            <input type="checkbox" value="remember-me"> запомнить меня
+        </label>
+
+        <button class="btn btn-large btn-primary" type="submit">войти</button><br>
+        <span style="color:red;">{{error}}</span>
+    </form>
+
+</div>
+</body>
+</html>

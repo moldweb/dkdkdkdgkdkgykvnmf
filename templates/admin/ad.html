@@ -1,0 +1,94 @@
+{% extends layout.html %}
+
+{% block content %}
+<form method="post">
+    <label>price</label>
+    <input type="text" name="price"><br><br>
+
+     <label>suprafata</label>
+    <input type="text" name="surface"><br><br>
+
+   <label>nume proprietar</label>
+    <input type="text" name="owner_name"><br><br>
+
+   <label>Telefon proprietar</label>
+    <input type="text" name="owner_phone"><br><br>
+
+   <label>Comentariu</label>
+    <input type="text" name="comment"><br><br>
+
+    <label>Descriere</label>
+    <textarea name="description"></textarea> <br><br>
+
+    {% for extra in extras %}
+        <input type="checkbox" name="extra" value="{{extra['ro']}}">{{extra['ro']}}<br>
+    {% end %}
+    <br>
+    <label>property type </label><br>
+    <select name="property_type" >
+        {% for property_type_id, it in property_types.items() %}
+            <option value="{{property_type_id}}">{{it['ro']}}</option>
+        {% end %}
+    </select>
+    <br>
+    <br>
+    <label>offer_type </label><br>
+    <select name="offer_type" >
+        {% for offer_type_id, it in offer_types.items() %}
+            <option value="{{offer_type_id}}">{{it['ro']}}</option>
+        {% end %}
+    </select>
+    <br>
+    <br>
+    <label>agent </label><br>
+    <select name="agent_id" >
+        {% for agent in agents %}
+            <option value="{{agent['user_id']}}">{{agent['name']}}</option>
+        {% end %}
+    </select>
+    <br>
+    <br>
+    <label>construction_type </label><br>
+    <select name="construction_type" >
+        {% for construction_type_id, it in construction_types.items() %}
+            <option value="{{construction_type_id}}">{{it['ro']}}</option>
+        {% end %}
+    </select>
+    <br>
+    <br>
+    <label>condition </label><br>
+    <select name="condition" >
+        {% for condition_id, it in conditions.items() %}
+            <option value="{{condition_id}}">{{it['ro']}}</option>
+        {% end %}
+    </select>
+    <br>
+    <br>
+    <label>location</label>
+    <select name="location_id">
+    {% for city_id, values in locations.items() %}
+         <optgroup label="{{values['ro']}}">
+        {% for child_name, children in values['children'].items() %}
+        <optgroup label="{{child_name}}">
+            {% for location_id , names in children.items() %}
+                <option value="{{location_id}}">{{names['ro']}}</option>
+
+            {% end %}</optgroup>
+        {% end %}</optgroup>
+    {% end %}
+    </select>
+    <br>
+    <br>
+    <label>strada</label>
+    <input type="text" name="street"><br><br>
+    <label>numaru</label>
+    <input type="text" name="number"><br><br>
+
+    <label>camere</label>
+    <input type="text" name="rooms"><br><br>
+
+    <input type="submit">
+
+</form>
+
+{% end %}
